@@ -13,7 +13,7 @@ class DTOCredentials:
 
 
 class CredentialList:
-    def __init__(self, tab, root_window):
+    def __init__(self, tab, root_window, db):
         self.root_window = root_window
         self.tree = ttk.Treeview(
             tab,
@@ -24,6 +24,7 @@ class CredentialList:
         self.fill_table_with_data()
         self.config_tree()
         self.tree.bind('<<TreeviewSelect>>', self.on_click)
+        self.db = db
 
     def on_click(self, event):
         item = self.tree.selection()[0]
