@@ -11,34 +11,36 @@ class DTOCredentials:
 
 class CredentialList:
     def __init__(self, tab):
-        tree = ttk.Treeview(
+        self.tree = ttk.Treeview(
             tab,
             columns=('portal', 'login'),
             show='headings',
             height=10
         )
+        self.config_tree()
+
+
 
     def config_tree(self):
-            self.tree.column(
-                '#1',
-                anchor=tk.CENTER,
-                stretch=tk.NO,
-                width=200
-            )
-            self.tree.heading('#1', text='portal')
-            self.tree.column(
-                '#2',
-                anchor=tk.CENTER,
-                stretch=tk.NO,
-                width=200
-            )
-            self.tree.heading('login', text='login')
+        self.tree.column(
+            '#1',
+            anchor=tk.CENTER,
+            stretch=tk.NO,
+            width=200
+        )
+        self.tree.heading('#1', text='portal')
+        self.tree.column(
+            '#2',
+            anchor=tk.CENTER,
+            stretch=tk.NO,
+            width=200
+        )
+        self.tree.heading('login', text='login')
 
-            for credential in credentials:
-                self.tree.insert('', 'end', values=(credential.portal, credential.login))
+        for credential in credentials:
+            self.tree.insert('', 'end', values=(credential.portal, credential.login))
 
-            self.tree.pack()
-
+        self.tree.pack()
 
 
 if __name__ == '__main__':
@@ -61,25 +63,5 @@ if __name__ == '__main__':
     tabs.pack(expand=1, fill='both')
 
     CredentialList(cred_tab)
-
-    tree.column(
-        '#1',
-        anchor=tk.CENTER,
-        stretch=tk.NO,
-        width=200
-    )
-    tree.heading('#1', text='portal')
-    tree.column(
-        '#2',
-        anchor=tk.CENTER,
-        stretch=tk.NO,
-        width=200
-    )
-    tree.heading('login', text='login')
-
-    for credential in credentials:
-        tree.insert('', 'end', values=(credential.portal, credential.login))
-
-    tree.pack()
 
     root.mainloop()
