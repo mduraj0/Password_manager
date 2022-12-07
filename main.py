@@ -4,6 +4,8 @@ from tkinter import ttk
 from dataclasses import dataclass
 from install import install
 from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+from models import Credentials
 
 
 @dataclass
@@ -34,6 +36,9 @@ class CredentialList:
         self.root_window.clipboard_append(selection)
 
     def fill_table_with_data(self):
+        with Session(self.db) as session:
+
+
         credentials = [
             DTOCredentials('o2.pl', 'duraj9@wp.pl'),
             DTOCredentials('facebook.pl', 'duraj4@o2.pl'),
