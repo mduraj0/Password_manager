@@ -1,6 +1,8 @@
+import sys
 import tkinter as tk
 from tkinter import ttk
 from dataclasses import dataclass
+from install import install
 
 
 @dataclass
@@ -56,7 +58,9 @@ class CredentialList:
         self.tree.pack()
 
 
-if __name__ == '__main__':\
+if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == 'install':
+        install()
 
     root = tk.Tk()
     root.title('Password Manager')
