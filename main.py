@@ -9,6 +9,11 @@ class DTOCredentials:
     login: str
 
 
+class CredentialList:
+    def __init__(self):
+
+
+
 if __name__ == '__main__':
     credentials = [
         DTOCredentials('o2.pl', 'duraj9@wp.pl'),
