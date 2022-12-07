@@ -23,10 +23,10 @@ class CredentialList:
             show='headings',
             height=10
         )
+        self.db = db
         self.fill_table_with_data()
         self.config_tree()
         self.tree.bind('<<TreeviewSelect>>', self.on_click)
-        self.db = db
 
     def on_click(self, event):
         item = self.tree.selection()[0]
@@ -37,7 +37,9 @@ class CredentialList:
 
     def fill_table_with_data(self):
         with Session(self.db) as session:
-
+            for credential in session.query(Credentials).all():
+                credential = DTOCredentials(credential.portal.name, credential.login)
+                self.tree.insert('', 'end', values=(credential.portal, credential.login))
 
         credentials = [
             DTOCredentials('o2.pl', 'duraj9@wp.pl'),
