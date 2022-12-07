@@ -10,7 +10,8 @@ class DTOCredentials:
 
 
 class CredentialList:
-    def __init__(self, tab):
+    def __init__(self, tab, root_window):
+        self.root_window = root_window
         self.tree = ttk.Treeview(
             tab,
             columns=('portal', 'login'),
@@ -25,6 +26,8 @@ class CredentialList:
         item = self.tree.selection()[0]
         selection = self.tree.item(item, 'values')
         print(selection)
+        self.root_window.clipboard_clear()
+        self.root_window.clipboard_append(selection[0])
 
     def fill_table_with_data(self):
         credentials = [
@@ -66,6 +69,6 @@ if __name__ == '__main__':\
     tabs.add(add_cred_tab, text='Add password')
     tabs.pack(expand=1, fill='both')
 
-    CredentialList(cred_tab)
+    CredentialList(cred_tab, root)
 
     root.mainloop()
