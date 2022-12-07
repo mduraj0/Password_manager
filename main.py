@@ -24,6 +24,7 @@ class CredentialList:
     def on_click(self, event):
         item = self.tree.selection()[0]
         selection = self.tree.item(item, 'values')
+        print(selection)
 
     def fill_table_with_data(self):
         credentials = [
