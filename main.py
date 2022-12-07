@@ -10,7 +10,34 @@ class DTOCredentials:
 
 
 class CredentialList:
-    def __init__(self):
+    def __init__(self, tab):
+        tree = ttk.Treeview(
+            tab,
+            columns=('portal', 'login'),
+            show='headings',
+            height=10
+        )
+
+    def config_tree(self):
+            self.tree.column(
+                '#1',
+                anchor=tk.CENTER,
+                stretch=tk.NO,
+                width=200
+            )
+            self.tree.heading('#1', text='portal')
+            self.tree.column(
+                '#2',
+                anchor=tk.CENTER,
+                stretch=tk.NO,
+                width=200
+            )
+            self.tree.heading('login', text='login')
+
+            for credential in credentials:
+                self.tree.insert('', 'end', values=(credential.portal, credential.login))
+
+            self.tree.pack()
 
 
 
@@ -33,12 +60,8 @@ if __name__ == '__main__':
 
     tabs.pack(expand=1, fill='both')
 
-    tree = ttk.Treeview(
-        cred_tab,
-        columns=('portal', 'login'),
-        show='headings',
-        height=10
-    )
+    CredentialList(cred_tab)
+
     tree.column(
         '#1',
         anchor=tk.CENTER,
