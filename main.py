@@ -27,7 +27,7 @@ class CredentialList:
         selection = self.tree.item(item, 'values')
         print(selection)
         self.root_window.clipboard_clear()
-        self.root_window.clipboard_append(selection[0])
+        self.root_window.clipboard_append(selection)
 
     def fill_table_with_data(self):
         credentials = [
