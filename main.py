@@ -19,6 +19,15 @@ class CredentialList:
         )
         self.config_tree()
 
+    def fill_table_with_data(self):
+        credentials = [
+            DTOCredentials('o2.pl', 'duraj9@wp.pl'),
+            DTOCredentials('facebook.pl', 'duraj4@o2.pl'),
+            DTOCredentials('gmail.com', 'durajczykmichal@gmail.com')
+        ]
+        for credential in credentials:
+            self.tree.insert('', 'end', values=(credential.portal, credential.login))
+
     def config_tree(self):
         self.tree.column(
             '#1',
@@ -34,20 +43,11 @@ class CredentialList:
             width=200
         )
         self.tree.heading('login', text='login')
-
-        for credential in credentials:
-            self.tree.insert('', 'end', values=(credential.portal, credential.login))
-
+        self.fill_table_with_data()
         self.tree.pack()
 
 
 if __name__ == '__main__':
-    credentials = [
-        DTOCredentials('o2.pl', 'duraj9@wp.pl'),
-        DTOCredentials('facebook.pl', 'duraj4@o2.pl'),
-        DTOCredentials('gmail.com', 'durajczykmichal@gmail.com')
-    ]
-
     root = tk.Tk()
     root.title('Password Manager')
 
