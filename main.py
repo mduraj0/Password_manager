@@ -19,8 +19,6 @@ class CredentialList:
         )
         self.config_tree()
 
-
-
     def config_tree(self):
         self.tree.column(
             '#1',
