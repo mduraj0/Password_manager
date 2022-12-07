@@ -59,8 +59,8 @@ if __name__ == '__main__':\
     root.title('Password Manager')
 
     tabs = ttk.Notebook(root)
-
     cred_tab = tk.Frame(tabs)
+
     add_cred_tab = tk.Frame(tabs)
     tabs.add(cred_tab, text='Credentials')
     tabs.add(add_cred_tab, text='Add password')
