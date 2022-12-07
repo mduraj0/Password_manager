@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
 
 
 def install():
@@ -6,5 +6,6 @@ def install():
     meta = MetaData()
     portals = Table(
         'portals', meta
-        Column()
+        Column('id', Integer, primary_key=True),
+        Column('name', String)
     )
