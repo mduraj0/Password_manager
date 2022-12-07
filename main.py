@@ -17,6 +17,7 @@ class CredentialList:
             show='headings',
             height=10
         )
+        self.fill_table_with_data()
         self.config_tree()
 
     def fill_table_with_data(self):
@@ -43,7 +44,6 @@ class CredentialList:
             width=200
         )
         self.tree.heading('login', text='login')
-        self.fill_table_with_data()
         self.tree.pack()
 
 
