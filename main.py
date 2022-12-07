@@ -22,7 +22,7 @@ class CredentialList:
         self.tree.bind('<<TreeviewSelect>>', self.on_click)
 
     def on_click(self, event):
-        print('works')
+        item =
 
     def fill_table_with_data(self):
         credentials = [
