@@ -61,6 +61,7 @@ class CredentialList:
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'install':
         install()
+        print('Tables has been created successfully')
 
     root = tk.Tk()
     root.title('Password Manager')
