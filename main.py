@@ -19,7 +19,7 @@ class CredentialList:
         )
         self.fill_table_with_data()
         self.config_tree()
-        self.tree.bind('<<TreeviewSelect>>', self.on_click())
+        self.tree.bind('<<TreeviewSelect>>', self.on_click)
 
     def on_click(self, event):
         print('works')
