@@ -76,6 +76,6 @@ if __name__ == '__main__':
     tabs.add(add_cred_tab, text='Add password')
     tabs.pack(expand=1, fill='both')
 
-    CredentialList(cred_tab, root)
+    CredentialList(cred_tab, root, engine)
 
     root.mainloop()
