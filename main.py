@@ -22,7 +22,8 @@ class CredentialList:
         self.tree.bind('<<TreeviewSelect>>', self.on_click)
 
     def on_click(self, event):
-        item =
+        item = self.tree.selection()[0]
+        selection = self.tree.item(item, 'values')
 
     def fill_table_with_data(self):
         credentials = [
