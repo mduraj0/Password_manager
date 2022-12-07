@@ -1,8 +1,7 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from sqlalchemy import MetaData, Table, Column, Integer, String
 
 
-def install():
-    engine = create_engine('sqlite:///database.db', future=True)
+def install(engine):
     meta = MetaData()
     portals = Table(
         'portals', meta,

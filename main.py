@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from dataclasses import dataclass
 from install import install
+from sqlalchemy import create_engine
 
 
 @dataclass
@@ -59,8 +60,9 @@ class CredentialList:
 
 
 if __name__ == '__main__':
+    engine = create_engine('sqlite:///database.db', future=True)
     if len(sys.argv) > 1 and sys.argv[1] == 'install':
-        install()
+        install(engine)
         print('Tables has been created successfully')
 
     root = tk.Tk()
