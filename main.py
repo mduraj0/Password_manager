@@ -64,8 +64,10 @@ class AddPassword:
 
 
 class CredentialList:
-    def __init__(self, tab, root_window, db, password):
+    def __init__(self, tab, root_window, db, password, tabs, main_pass_tab):
         self.root_window = root_window
+        self.tabs = tabs
+        self.main_pass_tab = main_pass_tab
         self.tree = ttk.Treeview(
             tab,
             columns=('portal', 'login'),
@@ -88,13 +90,13 @@ class CredentialList:
             ).one()
 
             try:
-                decryped = self.crypto.decrypt(credential.password)
+                decrypted = self.crypto.decrypt(credential.password)
             except InvalidToken:
                 pass
 
             self.root_window.clipboard_clear()
-            self.root_window.clipboard_append(decryped)
-            print(decryped)
+            self.root_window.clipboard_append(decrypted)
+            print(decrypted)
 
     def fill_table_with_data(self):
         with Session(self.db) as session:
@@ -133,7 +135,7 @@ if __name__ == '__main__':
 
     def pass_on_click():
         tabs.hide(0)
-        credential_list = CredentialList(cred_tab, root, engine, pass_entry.get())
+        credential_list = CredentialList(cred_tab, root, engine, pass_entry.get(), tabs, main_pass_tab)
         AddPassword(add_cred_tab, engine, credential_list, tabs, pass_entry.get())
 
 
