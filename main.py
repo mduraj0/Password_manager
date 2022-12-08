@@ -46,12 +46,12 @@ class AddPassword:
             cred = Credentials(
                 login=self.login.get(),
                 password=self.password.get(),
-                portal=self.portal.get()
+                portal=portal
             )
-            session.add_all(
+            session.add_all([
                 portal,
                 cred
-            )
+            ])
 
             session.commit()
 
