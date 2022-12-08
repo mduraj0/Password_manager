@@ -60,6 +60,7 @@ class AddPassword:
             self.credential_list.fill_table_with_data()
             self.tabs.select(0)
 
+
 class CredentialList:
     def __init__(self, tab, root_window, db):
         self.root_window = root_window
