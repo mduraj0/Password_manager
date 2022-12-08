@@ -92,11 +92,14 @@ class CredentialList:
             try:
                 decrypted = self.crypto.decrypt(credential.password)
             except InvalidToken:
-                pass
+                self.tree.pack_forget()
+                self.tabs.add(self.main_pass_tab, text='input password')
+                self.tabs.select(0)
+                return 0
 
             self.root_window.clipboard_clear()
             self.root_window.clipboard_append(decrypted)
-            print(decrypted)
+
 
     def fill_table_with_data(self):
         with Session(self.db) as session:
@@ -148,7 +151,7 @@ if __name__ == '__main__':
     cred_tab = tk.Frame(tabs)
     add_cred_tab = tk.Frame(tabs)
 
-    tabs.add(main_pass_tab, text='input password')
+        tabs.add(main_pass_tab, text='input password')
     tabs.add(cred_tab, text='Credentials')
     tabs.add(add_cred_tab, text='Add password')
     tabs.pack(expand=1, fill='both')
