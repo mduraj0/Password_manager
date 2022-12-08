@@ -15,9 +15,10 @@ class DTOCredentials:
 
 
 class AddPassword:
-    def __init__(self, tab, db, credential_list):
+    def __init__(self, tab, db, credential_list, tabs):
         self.db = db
         self.credential_list = credential_list
+        self.tabs = tabs
 
         button = ttk.Button(tab, text='Add password')
         portal_label = ttk.Label(tab, text='Portal:')
@@ -57,7 +58,7 @@ class AddPassword:
 
             session.commit()
             self.credential_list.fill_table_with_data()
-
+            self.tabs.select(0)
 
 class CredentialList:
     def __init__(self, tab, root_window, db):
@@ -122,6 +123,6 @@ if __name__ == '__main__':
     tabs.pack(expand=1, fill='both')
 
     credential_list = CredentialList(cred_tab, root, engine)
-    AddPassword(add_cred_tab, engine, credential_list)
+    AddPassword(add_cred_tab, engine, credential_list, tabs)
 
     root.mainloop()
