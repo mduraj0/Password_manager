@@ -17,4 +17,6 @@ class Crypto:
     def encrypt(self, string):
         return self.fernet.encrypt(string.encode('utf-8'))
 
+    def decrypt(self, string):
+        return self.fernet.decrypt(string.decode('utf-8'))
 
