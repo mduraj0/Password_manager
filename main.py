@@ -115,15 +115,24 @@ if __name__ == '__main__':
     root = tk.Tk()
     root.title('Password Manager')
 
-    tabs = ttk.Notebook(root)
-    cred_tab = tk.Frame(tabs)
-    add_cred_tab = tk.Frame(tabs)
+    def pass_on_click():
+        tabs = ttk.Notebook(root)
+        cred_tab = tk.Frame(tabs)
+        add_cred_tab = tk.Frame(tabs)
 
-    tabs.add(cred_tab, text='Credentials')
-    tabs.add(add_cred_tab, text='Add password')
-    tabs.pack(expand=1, fill='both')
+        tabs.add(cred_tab, text='Credentials')
+        tabs.add(add_cred_tab, text='Add password')
+        tabs.pack(expand=1, fill='both')
 
-    credential_list = CredentialList(cred_tab, root, engine)
-    AddPassword(add_cred_tab, engine, credential_list, tabs)
+        credential_list = CredentialList(cred_tab, root, engine)
+        AddPassword(add_cred_tab, engine, credential_list, tabs)
+
+    pass_label = ttk.Label(root, text='Input password:')
+    pass_entry = ttk.Entry(root)
+    pass_button = ttk.Button(root, text='OK', command=pass_on_click)
+
+    pass_label.pack(padx=5, pady=5)
+    pass_entry.pack(padx=5, pady=5)
+    pass_button.pack(padx=5, pady=5)
 
     root.mainloop()
