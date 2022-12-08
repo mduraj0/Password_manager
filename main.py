@@ -151,7 +151,7 @@ if __name__ == '__main__':
     cred_tab = tk.Frame(tabs)
     add_cred_tab = tk.Frame(tabs)
 
-        tabs.add(main_pass_tab, text='input password')
+    tabs.add(main_pass_tab, text='input password')
     tabs.add(cred_tab, text='Credentials')
     tabs.add(add_cred_tab, text='Add password')
     tabs.pack(expand=1, fill='both')
