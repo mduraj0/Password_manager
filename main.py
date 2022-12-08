@@ -5,13 +5,55 @@ from dataclasses import dataclass
 from install import install
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from models import Credentials
+from models import Credentials, Portal
 
 
 @dataclass
 class DTOCredentials:
     portal: str
     login: str
+
+
+class AddPassword:
+    def __init__(self, tab, db):
+        self.db = db
+        button = ttk.Button(tab, text='Add password')
+        portal_label = ttk.Label(tab, text='Portal:')
+        self.portal = ttk.Entry(tab)
+
+        login_label = ttk.Label(tab, text='Login:')
+        self.login = ttk.Entry(tab)
+
+        password_label = ttk.Label(tab, text='Password:')
+        self.password = ttk.Entry(tab)
+
+        portal_label.grid(row=0, column=0, padx=5)
+        self.portal.grid(row=0, column=1, pady=5)
+
+        login_label.grid(row=1, column=0, padx=5)
+        self.login.grid(row=1, column=1, pady=5)
+
+        password_label.grid(row=2, column=0, padx=5)
+        self.password.grid(row=2, column=1, pady=5)
+
+        button.grid(row=3, column=0, columnspan=2)
+        button.bind('<Button-1>', self.on_click)
+
+    def on_click(self, event):
+        print('Click!!!')
+        with Session(self.db) as session:
+            portal = Portal(name=self.portal.get())
+            cred = Credentials(
+                login=self.login.get(),
+                password=self.password.get(),
+                portal=self.portal.get()
+            )
+            session.add_all(
+                portal,
+                cred
+            )
+
+            session.commit()
 
 
 class CredentialList:
@@ -40,14 +82,6 @@ class CredentialList:
             for credential in session.query(Credentials).all():
                 credential = DTOCredentials(credential.portal.name, credential.login)
                 self.tree.insert('', 'end', values=(credential.portal, credential.login))
-
-        credentials = [
-            DTOCredentials('o2.pl', 'duraj9@wp.pl'),
-            DTOCredentials('facebook.pl', 'duraj4@o2.pl'),
-            DTOCredentials('gmail.com', 'durajczykmichal@gmail.com')
-        ]
-        for credential in credentials:
-            self.tree.insert('', 'end', values=(credential.portal, credential.login))
 
     def config_tree(self):
         self.tree.column(
@@ -85,5 +119,6 @@ if __name__ == '__main__':
     tabs.pack(expand=1, fill='both')
 
     CredentialList(cred_tab, root, engine)
+    AddPassword(add_cred_tab, engine)
 
     root.mainloop()
