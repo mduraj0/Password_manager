@@ -114,10 +114,15 @@ if __name__ == '__main__':
 
     root = tk.Tk()
     root.title('Password Manager')
-    root.geometry('300x300')
+    root.geometry('500x300')
 
     def pass_on_click():
         print(pass_entry.get())
+
+        pass_label.pack_forget()
+        pass_entry.pack_forget()
+        pass_button.pack_forget()
+
         tabs = ttk.Notebook(root)
         cred_tab = tk.Frame(tabs)
         add_cred_tab = tk.Frame(tabs)
