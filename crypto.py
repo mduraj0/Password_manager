@@ -10,5 +10,6 @@ class Crypto:
 
     @staticmethod
     def prepare_pin(pin):
-
+        token = hashlib.md5(pin.encode('utf-8')).hexdigest()
+        token = b64encode(token.encode('utf-8'))
         
