@@ -12,4 +12,9 @@ class Crypto:
     def prepare_pin(pin):
         token = hashlib.md5(pin.encode('utf-8')).hexdigest()
         token = b64encode(token.encode('utf-8'))
-        
+        return token
+
+    def encrypt(self, string):
+        return self.fernet.encrypt(string.encode('utf-8'))
+
+
