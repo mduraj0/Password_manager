@@ -142,10 +142,6 @@ if __name__ == '__main__':
         AddPassword(add_cred_tab, engine, credential_list, tabs, pass_entry.get())
 
 
-    #     pass_label.pack_forget()
-    #     pass_entry.pack_forget()
-    #     pass_button.pack_forget()
-
     tabs = ttk.Notebook(root)
     main_pass_tab = ttk.Frame(tabs)
     cred_tab = tk.Frame(tabs)
