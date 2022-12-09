@@ -9,6 +9,7 @@ from models import Credentials, Portal
 from crypto import Crypto
 from cryptography.fernet import InvalidToken
 
+
 @dataclass
 class DTOCredentials:
     portal: str
@@ -99,7 +100,6 @@ class CredentialList:
 
             self.root_window.clipboard_clear()
             self.root_window.clipboard_append(decrypted)
-
 
     def fill_table_with_data(self):
         with Session(self.db) as session:
