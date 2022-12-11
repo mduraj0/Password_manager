@@ -9,8 +9,8 @@ A simple Password Manager made using Tkinter and Python (3.10) . The passwords w
 * base64 (comes pre-installed with Python)
 * hashlib (comes pre-installed with Python)
 * Tkinter (comes pre-installed with Python)
-* cryptography (pip install cryptography)
-* SQLAlchemy ( pip install SQLAlchemy)
+* cryptography (`pip install cryptography`)
+* SQLAlchemy (`pip install SQLAlchemy`)
 
 ## Setup
 * Clone this repo `git clone https://github.com/mduraj0/Password_manager.git` and install the necessary libraries
